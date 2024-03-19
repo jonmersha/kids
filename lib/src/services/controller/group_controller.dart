@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:kids/src/services/model/vodeo.dart';
+import 'package:kids/src/services/model/video_group.dart';
 import 'package:kids/src/services/repository/repo_service.dart';
 
-class VideoController extends GetxController {
+class GroupController extends GetxController {
   final Services serviceRepo;
-  VideoController({required this.serviceRepo});
+  GroupController({required this.serviceRepo});
   List<dynamic> _list = [];
   List<dynamic> get list => _list;
 
@@ -13,10 +13,10 @@ class VideoController extends GetxController {
 
   Future<void> getList(String path) async {
     Response response = await serviceRepo.getAll(path);
-//print(response.body);
+    print(response.body);
     if (response.statusCode == 200) {
       _list = [];
-      _list.addAll(Video.fromJson(response.body).data!);
+      _list.addAll(VideoGroup.fromJson(response.body).data!);
 
       _isLoaded = true;
       update();

@@ -50,6 +50,11 @@ dev_dependencies:
   get: ^4.6.6
   youtube_player_flutter: ^9.0.0
   flutter_rating_bar: ^4.0.1
+  fluttertoast: ^8.2.4
+  page_transition: ^2.1.0
+  persistent_bottom_nav_bar_v2: ^4.2.8
+  carousel_slider: ^4.2.1
+  persistent_bottom_nav_bar: ^5.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -63,8 +68,13 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/
+    - assets/images/carousel_slideshow/
+    - assets/images/categories/
+    - assets/images/offersNsponcered/
+    - assets/images/todays_deals/
+    - assets/images/menu_pics/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

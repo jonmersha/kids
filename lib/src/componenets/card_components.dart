@@ -3,6 +3,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:youtube/youtube.dart';
 import 'package:youtube/youtube_thumbnail.dart';
 class VideoCard extends StatelessWidget {
+
+
   final String title;
   final double rating;
   final int likes;
@@ -10,17 +12,25 @@ class VideoCard extends StatelessWidget {
   final String subtitle;
   final String imageUrl;
 
-  const VideoCard({super.key,
+
+
+  const VideoCard( {super.key,
     required this.title,
     required this.rating,
     required this.likes,
     required this.views,
     required this.subtitle,
     required this.imageUrl,
+
+
   });
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    final textTheme = Theme.of(context).textTheme;
+    //print(imageUrl);
     return Card(
       elevation: 5,
       shape: RoundedRectangleBorder(
@@ -33,22 +43,27 @@ class VideoCard extends StatelessWidget {
         children: [
           Container(
             height: 200,
+            width: width,
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(5),bottom: Radius.circular(5)),
                 image: DecorationImage(image:
-                NetworkImage(YoutubeThumbnail(youtubeId: imageUrl).hq()),fit: BoxFit.fill
+                NetworkImage(YoutubeThumbnail(youtubeId: imageUrl).hq(),),fit: BoxFit.cover,
                )
             ),
           ),
 
-          ListTile(
-            title: Text(
-              title,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-            ),
-            subtitle: Text(
-              subtitle,
-              style: const TextStyle(color: Colors.grey),
+          SizedBox(
+            //height: 100,
+            width: 400,
+            child: ListTile(
+              title: Text(
+                title,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+              ),
+              subtitle: Text(
+                subtitle,
+                style: const TextStyle(color: Colors.grey,overflow: TextOverflow.ellipsis,),
+              ),
             ),
           ),
           Padding(
