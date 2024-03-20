@@ -35,14 +35,5 @@ PreferredSize homePageAppBar(double width, double height) {
   );
 }
 
-Container homeScreenAddressBar(double height, double width) {
-  return Container(
-    height: height * 0.06,
-    width: width,
-    decoration: buildBoxDecoration(),
-    child: const Text("Deliver To abokalcho"),
-  );
-}
-
 
 

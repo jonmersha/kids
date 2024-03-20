@@ -25,7 +25,7 @@ class Data {
   int? id;
   int? channelId;
   String? title;
-  String? deacription;
+  String? videoDescription;
   String? imageUrl;
   String? videoUrl;
   String? videoSourceType;
@@ -45,7 +45,7 @@ class Data {
       {this.id,
         this.channelId,
         this.title,
-        this.deacription,
+        this.videoDescription,
         this.imageUrl,
         this.videoUrl,
         this.videoSourceType,
@@ -65,7 +65,7 @@ class Data {
     id = json['id'];
     channelId = json['channel_id'];
     title = json['title'];
-    deacription = json['deacription'];
+    videoDescription = json['deacription'];
     imageUrl = json['image_url'];
     videoUrl = json['video_url'];
     videoSourceType = json['video_source_type'];
@@ -87,7 +87,7 @@ class Data {
     data['id'] = this.id;
     data['channel_id'] = this.channelId;
     data['title'] = this.title;
-    data['deacription'] = this.deacription;
+    data['deacription'] = this.videoDescription;
     data['image_url'] = this.imageUrl;
     data['video_url'] = this.videoUrl;
     data['video_source_type'] = this.videoSourceType;

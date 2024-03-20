@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:kids/src/bottom_bar.dart';
+import 'package:kids/bottom_bar.dart';
 import 'package:kids/src/pages/home/home_screen.dart';
 import 'package:kids/src/pages/profile/UserProfile.dart';
-import 'package:kids/src/pages/vidoe_list.dart';
+import 'package:kids/src/pages/widgets/vidoe_list.dart';
 import 'package:get/get.dart';
 import 'package:kids/src/services/controller/group_controller.dart';
+import 'package:kids/src/services/controller/play_list_controller.dart';
+import 'package:kids/src/services/controller/play_list_video_controller.dart';
 import 'package:kids/src/services/controller/video_controller.dart';
+import 'package:kids/src/services/model/play_list.dart';
 
 //import 'package:kids/src/services/controller/video_controller.dart';
 import 'package:kids/src/services/repository/repo_service.dart';
@@ -21,8 +24,14 @@ void main() {
   Get.lazyPut(() => VideoController(serviceRepo: Get.find()));
   Get.lazyPut(() => GroupController(serviceRepo: Get.find()));
 
+  Get.lazyPut(() => PlayListController(serviceRepo: Get.find()));
+  Get.lazyPut(() => PlayListVideoController(serviceRepo: Get.find()));
+
   Get.find<VideoController>().getList(VIDEOS);
   Get.find<GroupController>().getList(GROUP);
+
+  Get.find<PlayListController>().getList(PLAY_LIST);
+  Get.find<PlayListVideoController>().getList(PLAY_LIST_VIDEO);
 
   runApp(const KidsApp());
 }
