@@ -5,7 +5,6 @@ import 'package:kids/src/pages/home/widgets/cards.dart';
 import 'package:kids/src/services/controller/video_controller.dart';
 import 'package:kids/src/utils/app_constants.dart';
 
-
 class VideoListView extends StatelessWidget {
   const VideoListView({super.key});
 
@@ -13,12 +12,12 @@ class VideoListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GetBuilder<VideoController>(
-        builder: (Controller) {
-          return Controller.isLoaded
+        builder: (videoController) {
+          return videoController.isLoaded
               ? RefreshIndicator(
                   onRefresh: refreshList,
                   child: ListView.builder(
-                      itemCount: Controller.list.length,
+                      itemCount: videoController.list.length,
                       itemBuilder: (BuildContext context, int index) {
                         return InkWell(
                           onTap: () {
@@ -26,19 +25,20 @@ class VideoListView extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => UTB(
                                     videoUrl:
-                                        '${Controller.list[index].videoUrl}'),
+                                        '${videoController.list[index].videoUrl}'),
                               ),
                             );
                           },
                           child: SizedBox(
                             height: 390,
                             child: VideoCard(
-                              title: Controller.list[index].title!,
+                              title: videoController.list[index].title!,
                               rating: 4.5,
                               likes: 2,
-                              views: Controller.list[index].videoView!,
-                              subtitle: Controller.list[index].videoDescription!,
-                              imageUrl: Controller.list[index].imageUrl,
+                              views: videoController.list[index].videoView!,
+                              subtitle:
+                                  videoController.list[index].videoDescription!,
+                              imageUrl: videoController.list[index].imageUrl,
                             ),
                           ),
                         );

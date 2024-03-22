@@ -24,24 +24,36 @@ class PlayList {
 class Data {
   int? id;
   String? playListName;
-  Null? playListLogo;
+  String? description;
+  String? playListLogo;
   int? userId;
+  int? itemCount;
 
-  Data({this.id, this.playListName, this.playListLogo, this.userId});
+  Data(
+      {this.id,
+      this.playListName,
+      this.description,
+      this.playListLogo,
+      this.userId,
+      this.itemCount});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     playListName = json['play_list_name'];
+    description = json['description'];
     playListLogo = json['play_list_logo'];
     userId = json['user_id'];
+    itemCount = json['item_count'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['play_list_name'] = this.playListName;
-    data['play_list_logo'] = this.playListLogo;
-    data['user_id'] = this.userId;
+    data['id'] = id;
+    data['play_list_name'] = playListName;
+    data['description'] = description;
+    data['play_list_logo'] = playListLogo;
+    data['user_id'] = userId;
+    data['item_count'] = itemCount;
     return data;
   }
 }

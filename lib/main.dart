@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:kids/bottom_bar.dart';
 import 'package:kids/src/pages/home/home_screen.dart';
 import 'package:kids/src/pages/profile/UserProfile.dart';
-import 'package:kids/src/pages/widgets/vidoe_list.dart';
 import 'package:get/get.dart';
 import 'package:kids/src/services/controller/group_controller.dart';
 import 'package:kids/src/services/controller/play_list_controller.dart';
 import 'package:kids/src/services/controller/play_list_video_controller.dart';
 import 'package:kids/src/services/controller/video_controller.dart';
-import 'package:kids/src/services/model/play_list.dart';
 
 //import 'package:kids/src/services/controller/video_controller.dart';
 import 'package:kids/src/services/repository/repo_service.dart';
@@ -38,7 +36,6 @@ void main() {
 
 class KidsApp extends StatelessWidget {
   const KidsApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,9 +44,9 @@ class KidsApp extends StatelessWidget {
       theme: theme,
       routes: {
         "/home": (context) => const HomeScreen(),
-        "/user": (context) => const UserProfile()
+        "/user": (context) => const UserProfile(),
       },
-      home: Scaffold(
+      home: const Scaffold(
         body: BottomBar(),
       ),
     );

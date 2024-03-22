@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:kids/src/utils/app_constants.dart';
 import 'package:youtube/youtube_thumbnail.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-
-Widget mostViewed(){
+Widget mostViewed() {
   return Card();
 }
 
-Widget channelCard(){
+Widget channelCard() {
   return const Card();
 }
-Widget playlistCard({String title='',String descriptions='',String imageUrl=''}){
+
+Widget playlistCard(
+    {String title = '', String descriptions = '', String imageUrl = ''}) {
   return Card(
     color: Colors.grey.shade200,
     elevation: 4.0,
@@ -22,12 +24,12 @@ Widget playlistCard({String title='',String descriptions='',String imageUrl=''})
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Image.network(
-                YoutubeThumbnail(youtubeId: imageUrl).hq(),fit: BoxFit.fitWidth,
+                '$BASE_URL/$imageUrl',
+                //YoutubeThumbnail(youtubeId: imageUrl).hq(),fit: BoxFit.fitWidth,
                 width: 100,
                 height: 90,
               ),
-               Flexible(
-
+              Flexible(
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Column(
@@ -37,24 +39,21 @@ Widget playlistCard({String title='',String descriptions='',String imageUrl=''})
                       Text(
                         '$title',
                         style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                            overflow: TextOverflow.ellipsis
-                        ),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis),
                       ),
                       Text(
                         descriptions,
                         style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          overflow: TextOverflow.ellipsis
-                        ),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            overflow: TextOverflow.ellipsis),
                       ),
                     ],
                   ),
                 ),
               ),
-
             ],
           ),
           const Row(
@@ -81,7 +80,6 @@ Widget playlistCard({String title='',String descriptions='',String imageUrl=''})
                   Text('100 Items'),
                 ],
               ),
-
             ],
           ),
         ],
@@ -91,8 +89,6 @@ Widget playlistCard({String title='',String descriptions='',String imageUrl=''})
 }
 
 class VideoCard extends StatelessWidget {
-
-
   final String title;
   final double rating;
   final int likes;
@@ -100,15 +96,14 @@ class VideoCard extends StatelessWidget {
   final String subtitle;
   final String imageUrl;
 
-  const VideoCard( {super.key,
+  const VideoCard({
+    super.key,
     required this.title,
     required this.rating,
     required this.likes,
     required this.views,
     required this.subtitle,
     required this.imageUrl,
-
-
   });
 
   @override
@@ -124,23 +119,24 @@ class VideoCard extends StatelessWidget {
         color: Colors.grey.shade200,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
-
         ),
         margin: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: width>600?300:200,
+              height: width > 600 ? 300 : 200,
               //width: 450,
               decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
-                  image: DecorationImage(image:
-                  NetworkImage(YoutubeThumbnail(youtubeId: imageUrl).hq(),),fit: BoxFit.cover,
-                  )
-              ),
+                  borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(10)),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      YoutubeThumbnail(youtubeId: imageUrl).hq(),
+                    ),
+                    fit: BoxFit.cover,
+                  )),
             ),
-
             SizedBox(
               height: 100,
               width: 400,
@@ -150,12 +146,14 @@ class VideoCard extends StatelessWidget {
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
-                      overflow: TextOverflow.ellipsis
-                  ),
+                      overflow: TextOverflow.ellipsis),
                 ),
                 subtitle: Text(
                   subtitle,
-                  style: const TextStyle(color: Colors.grey,overflow: TextOverflow.ellipsis,),
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ),
             ),
