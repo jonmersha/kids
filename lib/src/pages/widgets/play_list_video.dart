@@ -29,7 +29,6 @@ Widget playlistCard(
             children: <Widget>[
               Image.network(
                 '$BASE_URL/$imageUrl',
-                //YoutubeThumbnail(youtubeId: imageUrl).hq(),fit: BoxFit.fitWidth,
                 width: 100,
                 height: 90,
               ),

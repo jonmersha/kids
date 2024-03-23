@@ -3,6 +3,8 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:kids/src/components/card_components.dart';
 import 'package:kids/src/components/youtube.dart';
 import 'package:kids/src/pages/home/widgets/cards.dart';
+import 'package:kids/src/pages/widgets/channel_list_view.dart';
+import 'package:kids/src/services/controller/channel_controller.dart';
 import 'package:kids/src/services/controller/play_list_controller.dart';
 import 'package:kids/src/services/controller/video_controller.dart';
 
@@ -27,7 +29,7 @@ GetBuilder<VideoController> newVideos(double height, double width) {
                           MaterialPageRoute(
                             builder: (context) => UTB(
                                 videoUrl:
-                                    '${videoController.list[index].videoUrl}'),
+                                    '${videoController.list[index].videoUrl}',catID: 2,),
                           ),
                         );
                       },
@@ -51,13 +53,52 @@ GetBuilder<VideoController> newVideos(double height, double width) {
   );
 }
 
+GetBuilder<ChannelController> channelList(double height, double width) {
+  return GetBuilder<ChannelController>(
+    builder: (controller) {
+      return controller.isLoaded
+          ? SizedBox(
+              width: width > 600 ? 700 : width,
+              child: ListView.builder(
+                itemCount: controller.list.length,
+                shrinkWrap: true,
+                // scrollDirection: Axis.horizontal,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return SizedBox(
+                   // height: width > 600 ? 500 : 400,
+                    // width: width * 0.78,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => UTB(
+                                videoUrl: '${controller.list[index].videoUrl}',catID: 2,),
+                          ),
+                        );
+                      },
+                      child: channelListCard(
+                          title: controller.list[index].channelName,
+                          imageUrl: controller.list[index].imageUrl),
+                    ),
+                  );
+                },
+              ),
+            )
+          : const Center(
+              child: CircularProgressIndicator(),
+            );
+    },
+  );
+}
+
 GetBuilder<PlayListController> playList(double height, double width) {
   return GetBuilder<PlayListController>(
     builder: (playListController) {
       return playListController.isLoaded
           ? Container(
               height: 200,
-              color: Colors.black,
+              //color: Colors.black,
               //width: 390,
               child: ListView.builder(
                 itemCount: playListController.list.length,
@@ -65,16 +106,11 @@ GetBuilder<PlayListController> playList(double height, double width) {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return SizedBox(
-                    width: 340,
+                    width: width,
                     child: InkWell(
                       onTap: () {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //     builder: (context) => UTB(
-                        //         videoUrl:
-                        //             '${playListController.list[index].videoUrl}'),
-                        //   ),
-                        // );
+
+
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

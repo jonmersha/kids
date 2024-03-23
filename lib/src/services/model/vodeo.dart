@@ -25,12 +25,13 @@ class Data {
   int? id;
   int? channelId;
   String? title;
+  int? videoCategory;
   String? videoDescription;
   String? imageUrl;
   String? videoUrl;
   String? videoSourceType;
   int? isEnabled;
-  Null? uploadDate;
+  String? uploadDate;
   double? videoLength;
   int? videoUploder;
   String? videoType;
@@ -45,6 +46,7 @@ class Data {
       {this.id,
         this.channelId,
         this.title,
+        this.videoCategory,
         this.videoDescription,
         this.imageUrl,
         this.videoUrl,
@@ -65,7 +67,8 @@ class Data {
     id = json['id'];
     channelId = json['channel_id'];
     title = json['title'];
-    videoDescription = json['deacription'];
+    videoCategory = json['video_Category'];
+    videoDescription = json['video_description'];
     imageUrl = json['image_url'];
     videoUrl = json['video_url'];
     videoSourceType = json['video_source_type'];
@@ -87,7 +90,8 @@ class Data {
     data['id'] = this.id;
     data['channel_id'] = this.channelId;
     data['title'] = this.title;
-    data['deacription'] = this.videoDescription;
+    data['video_Category'] = this.videoCategory;
+    data['video_description'] = this.videoDescription;
     data['image_url'] = this.imageUrl;
     data['video_url'] = this.videoUrl;
     data['video_source_type'] = this.videoSourceType;

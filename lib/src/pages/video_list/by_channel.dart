@@ -5,8 +5,9 @@ import 'package:kids/src/pages/home/widgets/cards.dart';
 import 'package:kids/src/services/controller/video_controller.dart';
 import 'package:kids/src/utils/app_constants.dart';
 
-class VideoListView extends StatelessWidget {
-  const VideoListView({super.key});
+class VideoListByCategory extends StatelessWidget {
+  final int catId;
+  const VideoListByCategory({super.key, required this.catId});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +15,7 @@ class VideoListView extends StatelessWidget {
         builder: (videoController) {
           return videoController.isLoaded
               ? RefreshIndicator(
-                  onRefresh: refreshList,
+                  onRefresh:refreshList,
                   child: ListView.builder(
                       itemCount: videoController.list.length,
                       itemBuilder: (BuildContext context, int index) {
@@ -24,10 +25,7 @@ class VideoListView extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => UTB(
                                     videoUrl:
-                                        '${videoController.list[index].videoUrl}',
-                                  catID: 2,
-
-                                ),
+                                        '${videoController.list[index].videoUrl}',catID: 2,),
                               ),
                             );
                           },
@@ -57,6 +55,6 @@ class VideoListView extends StatelessWidget {
   }
 
   Future<void> refreshList() async {
-    Get.find<VideoController>().getList(VIDEOS);
+    Get.find<VideoController>().getList('$CHANNEL_CAT/${catId}');
   }
 }

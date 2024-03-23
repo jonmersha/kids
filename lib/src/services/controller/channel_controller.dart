@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:kids/src/services/model/channel.dart';
-import 'package:kids/src/services/model/video_group.dart';
 import 'package:kids/src/services/repository/repo_service.dart';
 
 class ChannelController extends GetxController {
@@ -8,7 +7,6 @@ class ChannelController extends GetxController {
   ChannelController({required this.serviceRepo});
   List<dynamic> _list = [];
   List<dynamic> get list => _list;
-
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
 
@@ -18,7 +16,6 @@ class ChannelController extends GetxController {
     if (response.statusCode == 200) {
       _list = [];
       _list.addAll(Channel.fromJson(response.body).data!);
-
       _isLoaded = true;
       update();
       _isLoaded = true;

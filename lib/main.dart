@@ -3,6 +3,7 @@ import 'package:kids/bottom_bar.dart';
 import 'package:kids/src/pages/home/home_screen.dart';
 import 'package:kids/src/pages/profile/UserProfile.dart';
 import 'package:get/get.dart';
+import 'package:kids/src/services/controller/channel_controller.dart';
 import 'package:kids/src/services/controller/group_controller.dart';
 import 'package:kids/src/services/controller/play_list_controller.dart';
 import 'package:kids/src/services/controller/play_list_video_controller.dart';
@@ -25,7 +26,8 @@ void main() {
   Get.lazyPut(() => PlayListController(serviceRepo: Get.find()));
   Get.lazyPut(() => PlayListVideoController(serviceRepo: Get.find()));
 
-  Get.find<VideoController>().getList(VIDEOS);
+  Get.lazyPut(() => ChannelController(serviceRepo: Get.find()));
+  Get.find<ChannelController>().getList(CHANNEL);
   Get.find<GroupController>().getList(GROUP);
 
   Get.find<PlayListController>().getList(PLAY_LIST);

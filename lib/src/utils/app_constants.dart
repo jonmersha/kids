@@ -10,6 +10,8 @@ const String VIDEOS_BY_CHANNEL = '/kids/video/channel';
 const String VIDEOS_BY_GROUP = '/kids/video/group';
 const String VIDEOS_POPULAR = '/kids/video/new';
 
+const String CHANNEL = '/kids/channels';
+const String CHANNEL_CAT = '/kids/video/group';
 const String PLAY_LIST = '/kids/play_list';
 const String PLAY_LIST_VIDEO = '/kids/play_list_video';
 
